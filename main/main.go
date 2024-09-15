@@ -5,19 +5,12 @@ import (
 )
 
 func main() {
-	birdsPerDay := []int{2, 5, 0, 7, 4, 1}
+	friendsList := []string{"sauce", "noodles", "béchamel", "marjoram"}
+	myList := []string{"sauce", "noodles", "meat", "tomatoes", "?"}
 
-	for i := 0; i < len(birdsPerDay); i += 2 {
-		fmt.Println(birdsPerDay[i])
-		birdsPerDay[i] += 1
-	}
+	lastElem := friendsList[len(friendsList)-1]
 
-	fmt.Println(birdsPerDay)
+	myList[len(myList)-1] = lastElem
 
-	// birdCount := 0
-	// for i := 0; i < len(birdsPerDay); i++ {
-	// 	birdCount += birdsPerDay[i]
-	// }
-
-	// fmt.Println(birdCount)
+	fmt.Println(myList)
 }
