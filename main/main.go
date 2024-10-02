@@ -2,29 +2,16 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	var balance float64 = 200.75
+	date := "6/6/2005 10:30:00"
+	layout := "2/1/2006 15:04:05"
+	t, _ := time.Parse(layout, date)
 
-	switch {
-	case balance < 0:
-		fmt.Println(float32(3.213))
-	case balance >= 0 && balance < 1000:
-		fmt.Println(float32(0.5))
-	case balance >= 1000 && balance < 5000:
-		fmt.Println(float32(1.621))
-	default:
-		fmt.Println(float32(2.475))
-	}
+	fmt.Println(t.Format("Monday, January 2, 2006, at 15:04"))
 
-	fmt.Println("Interest Rate", float64(balance*0.5*1/100))
-
-	count := 0
-	for balance < 210 {
-		balance += 0.5 + balance
-		count++
-	}
-
-	fmt.Println(count, balance)
+	anniversaryDate := time.Date(2020, time.September, 15, 0, 0, 0, 0, time.UTC)
+	fmt.Println(anniversaryDate)
 }
