@@ -1,27 +1,51 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	units := map[string]int{}
-	units["quarter_of_a_dozen"] = 3
-	units["half_of_a_dozen"] = 6
-	units["dozen"] = 12
-	units["small_gross"] = 120
-	units["gross"] = 144
-	units["great_gross"] = 1728
+	type File []bool
 
-	bill := map[string]int{}
+	type Chessboard map[string]File
 
-	bill["carrot"] += units["dozen"]
-	bill["carrot"] += units["half_of_a_dozen"]
+	var cb Chessboard = map[string]File{
+		"A": {true, false, true, false, false, false, false, true},
+		"B": {false, false, false, false, true, false, false, false},
+		"C": {false, false, true, false, false, false, false, false},
+		"D": {false, false, false, false, false, false, false, false},
+		"E": {false, false, false, false, false, true, false, true},
+		"F": {false, false, false, false, false, false, false, false},
+		"G": {false, false, false, true, false, false, false, false},
+		"H": {true, true, true, true, true, true, false, true},
+	}
 
-	// bill["carrot"] -= units["quarter_of_a_dozen"]
+	// file := "A"
+	rank := 2
 
-	value, exists := bill["carrot"]
+	count := 0
 
-	fmt.Println(value, exists)
-	fmt.Println(bill)
+	// for k, v := range cb {
+	// 	if k == file {
+	// 		for _, val := range v {
+	// 			if val == true {
+	// 				count += 1
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+	l := len(cb)
+
+	if rank >= 1 && rank <= l {
+		for _, f := range cb {
+			for i, v := range f {
+				if i+1 == rank && v {
+					count += 1
+				}
+			}
+		}
+	}
+
+	fmt.Println(cb)
+
+	fmt.Println(count)
 }
