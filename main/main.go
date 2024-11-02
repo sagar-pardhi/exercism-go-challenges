@@ -1,24 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+	"unicode/utf8"
+)
 
-type Car struct {
-	speed        int
-	batteryDrain int
-}
+func Replace(log string, oldRune, newRune rune) string {
+	oldRuneValue := fmt.Sprintf("%c", oldRune)
+	newRuneValue := fmt.Sprintf("%c", newRune)
 
-func NewCar(speed, batteryDrain int) *Car {
-	return &Car{
-		speed:        speed,
-		batteryDrain: batteryDrain,
-	}
-}
-
-func (car Car) Drive() {
-	fmt.Println("car is now Car", car)
+	return strings.Replace(log, oldRuneValue, newRuneValue, 1)
 }
 
 func main() {
-	c := NewCar(5, 8)
-	c.Drive()
+	log := "please replace '👎' with '👍'"
+	res := Replace(log, '👎', '👍')
+
+	fmt.Println(res)
+
+	test := "hello❗"
+	fmt.Println(utf8.RuneCountInString(test) <= 6)
 }
