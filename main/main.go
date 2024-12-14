@@ -4,20 +4,9 @@ import (
 	"fmt"
 )
 
-type Resident struct {
-	name    string
-	age     int
-	address map[string]string
-}
-
 func main() {
-	addr := map[string]string{}
+	var float = -12.345
 
-	r := Resident{
-		name:    "",
-		age:     10,
-		address: addr,
-	}
-
-	fmt.Println(len(r.address))
+	res := fmt.Sprintf("This is the number %.1f", float)
+	fmt.Println(res)
 }
